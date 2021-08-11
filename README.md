@@ -10,6 +10,18 @@
 [https://www.youtube.com/watch?v=6kjGpSU_aJE](https://www.youtube.com/watch?v=6kjGpSU_aJE)
 
 ---
+## Run Test Code
+```bash
+javac HelloAgent.java
+
+java HelloAgent
+
+javac HelloClient.java
+
+java HelloClient
+```
+
+---
 ## JMX Agent
 [HelloAgent.java](./src/com/example/jmx/HelloAgent.java)
 
