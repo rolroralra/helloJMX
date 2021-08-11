@@ -12,6 +12,8 @@
 ---
 ## Run Test Code
 ```bash
+cd src/com/example/jmx
+
 javac HelloAgent.java
 
 java HelloAgent
