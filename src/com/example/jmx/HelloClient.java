@@ -1,5 +1,6 @@
 package com.example.jmx;
 
+import com.example.jmx.beans.HelloMBean;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import javax.management.Attribute;
@@ -20,7 +21,7 @@ public class HelloClient {
     private final String jmxServiceUrl;
 
     public HelloClient() {
-        this.domain = "com.example.jmx";
+        this.domain = "com.example.jmx.beans";
         this.ip = "localhost";
         this.port = 7777;
         this.contextPath = "hello";
@@ -48,7 +49,7 @@ public class HelloClient {
 //            ObjectName helloMBeanName = ObjectName.getInstance(this.domain, "name", "helloMBean");
             ObjectName helloMBeanName = ObjectName.getInstance(this.domain, new Hashtable<String, String>(){{
                 put("name", "helloMBean");
-                put("type", "basic");
+//                put("type", "basic");
             }});
 
             HelloMBean hello = JMX.newMBeanProxy(mBeanServerConnection, helloMBeanName, HelloMBean.class, true);
@@ -58,10 +59,18 @@ public class HelloClient {
 
             hello.setMessage("Hello JMX?!?");
             System.out.println(hello.sayHello());
+            System.out.println(hello.getCount());
 
 //            mBeanServerConnection.setAttribute(helloMBeanName, new Attribute("Message", "????"));
             mBeanServerConnection.setAttribute(helloMBeanName, new Attribute(StringUtils.capitalize("message"), "????"));
             System.out.println(hello.sayHello());
+
+            mBeanServerConnection.setAttribute(helloMBeanName, new Attribute(StringUtils.capitalize("count"), 0));
+            System.out.println(hello.getCount());
+
+            hello.setCount(100);
+            System.out.println(hello.getCount());
+
 
         } catch (Exception e) {
             e.printStackTrace();
