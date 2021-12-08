@@ -1,5 +1,8 @@
 package com.example.jmx;
 
+import com.example.jmx.beans.Hello;
+import com.example.jmx.beans.HelloMBean;
+
 import javax.management.*;
 import javax.management.remote.JMXConnectorServer;
 import javax.management.remote.JMXConnectorServerFactory;
@@ -18,13 +21,13 @@ public class HelloAgent {
     private final String jmxServiceUrl;
 
     public HelloAgent() {
-        this.domain = "com.example.jmx";
+        this.domain = "com.example.jmx.beans";
         this.ip = "localhost";
         this.port = 7777;
         this.contextPath = "hello";
         this.mbs = MBeanServerFactory.createMBeanServer(this.domain);
         this.jmxServiceUrl = String.format("service:jmx:rmi:///jndi/rmi://%s:%d/%s", this.ip, this.port, this.contextPath);
-        
+
         // JMXServiceURL = "service:jmx:rmi://[ip:port]/jndi/rmi://${ip}:${port}/${contextPath}"
         // rmi : Remote Method Invocation
         // jndi : Java Naming and Directory Interface
@@ -34,7 +37,7 @@ public class HelloAgent {
 
             JMXServiceURL serviceUrl = new JMXServiceURL(jmxServiceUrl);
 
-            helloMBeanObjectName= new ObjectName(String.format("%s:type=basic,name=%s", this.domain, "helloMBean"));
+            helloMBeanObjectName= new ObjectName(String.format("%s:name=%s", this.domain, "helloMBean"));
             helloMBean = new Hello();
 
             mbs.registerMBean(helloMBean, helloMBeanObjectName);
@@ -45,6 +48,8 @@ public class HelloAgent {
             NotificationFilter notificationFilter = (NotificationFilter) notificationListener;
             connector.addNotificationListener(notificationListener, notificationFilter, new NotificationCallback());
             connector.start();
+
+            System.out.printf("JMX Service URL: %s%n", jmxServiceUrl);
 
         } catch (Exception e) {
             e.printStackTrace();
