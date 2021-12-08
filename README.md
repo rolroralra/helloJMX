@@ -9,6 +9,8 @@
 
 ![https://blog.kakaocdn.net/dn/bgjyIu/btqCOzYZilQ/JlokHTlHqeI5B4LuQRspSk/img.png](./img/img2.png)
 
+[https://www.baeldung.com/java-management-extensions](https://www.baeldung.com/java-management-extensions)
+
 [https://narup.tistory.com/23](https://narup.tistory.com/23)
 
 [https://www.youtube.com/watch?v=6kjGpSU_aJE](https://www.youtube.com/watch?v=6kjGpSU_aJE)
