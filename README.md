@@ -1,6 +1,11 @@
 ## TODO
 [https://bob-full.tistory.com/29](https://bob-full.tistory.com/29)
 
+
+---
+## JConsole
+[https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=pcmola&logNo=221810324566](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=pcmola&logNo=221810324566)
+
 ---
 ## JMX
 > Java Management Extension (MBean)
